@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header .menu {
+  background: yellow;
+  list-style: none;
+}
