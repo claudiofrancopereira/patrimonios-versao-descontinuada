@@ -1,3 +1,6 @@
 node_modules/
-patrimonios/
-tmp/
+patrimonios/*
+!patrimonios/.gitkeep
+tmp/*
+!tmp/.gitkeep
+
