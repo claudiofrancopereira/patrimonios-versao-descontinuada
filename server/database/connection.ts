@@ -1,12 +1,12 @@
 import knex from 'knex';
-import path from 'path';
 
-const connection = knex( {
-    client: 'sqlite3',
+const db = knex({
+    client: 'pg',
     connection: {
-        filename: path.resolve(__dirname, 'database.sqlite'),
-    },
-    useNullAsDefault: true,
-});
+        database: 'patrimonios',
+        user: 'postgres',
+        password: '0000',
+      }
+    });
 
-export default connection;
+export default db;

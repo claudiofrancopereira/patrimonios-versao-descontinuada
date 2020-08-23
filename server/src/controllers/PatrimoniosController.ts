@@ -5,7 +5,6 @@ import path from 'path';
 
 class PatrimoniosController {
     async create(request: Request, response: Response) {
-
         const {
             nome,
             endereco,
@@ -18,14 +17,16 @@ class PatrimoniosController {
         const trx = await db.transaction();
         
         try {
-            const [id] = await trx('patrimonios').insert({
-                nome,
-                endereco,
-                latitude,
-                longitude,
-                observacoes,
-                criado_por
-            });
+            const [id] = await trx('patrimonios')
+                .insert({
+                    nome,
+                    endereco,
+                    latitude,
+                    longitude,
+                    observacoes,
+                    criado_por
+                })
+                .returning('id');
             
             await trx.commit();
 
@@ -49,11 +50,10 @@ class PatrimoniosController {
                 });
             });
 
-            return response.status(201).send();
+            return response.json(id)
 
         } catch {
             await trx.rollback();
-    
             return response.status(400).json({
                 error: 'Unexpected error creating patrimonio'
             });

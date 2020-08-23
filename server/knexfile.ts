@@ -1,15 +1,16 @@
-//knexfile.ts
-
 import path from 'path';
 
 module.exports = {
-    client: 'sqlite3',
-    connection: {
-        filename: path.resolve(__dirname, 'database', 'database.sqlite')
-    },
+  client: 'pg',
 
-    migrations: {
-        directory: path.resolve(__dirname, 'database', 'migrations')
-    },
-    useNullAsDefault: true,
+  connection: {
+    database: 'patrimonios',
+    user: 'postgres',
+    password: '0000',
+  },
+
+  migrations: {
+    directory: path.resolve(__dirname, 'database', 'migrations'),
+  },
+  
 };

@@ -1,7 +1,11 @@
-//server.ts
 import express from 'express';
 import routes from './routes';
 import cors from 'cors';
+
+interface Error {
+    status?: number;
+    message?: string;
+}
 
 const app = express();
 
